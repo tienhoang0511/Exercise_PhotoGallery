@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:Exercise_PhotoGallery.MarkupExtension"
+
+             x:Class="Exercise_PhotoGallery.GalleryPage"
+             BackgroundColor="Black"
+             Padding="0,40,0,0">
+    <AbsoluteLayout >
+        <Grid 
+            AbsoluteLayout.LayoutBounds="0,0,600,40" AbsoluteLayout.LayoutFlags="PositionProportional"
+            ColumnDefinitions ="115,120,115"
+            
+            >
+
+            <Image  Grid.Column="0" 
+                    x:Name="previous"
+                    Source="{local1:EmbeddedImage Exercise_PhotoGallery.icon.previous.png}"
+                    WidthRequest="56"
+                    HeightRequest="56">
+                
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="btn_Previous"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+                
+            </Image>
+                    
+            <ActivityIndicator Grid.Column="1"  
+                               IsRunning="{Binding Source={x:Reference image},Path=IsLoading}" 
+                               Color="White"
+                           />
+            
+            <Image  Grid.Column="2"  
+                    x:Name="next"
+                    Source="{local1:EmbeddedImage Exercise_PhotoGallery.icon.next.png}"
+                    WidthRequest="56"
+                    HeightRequest="56">
+                
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="btn_Next"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+                
+            </Image>
+
+        </Grid>
+
+        <Image x:Name="image" Source="https://loremflickr.com/320/240/1"
+               Aspect="Fill"
+               AbsoluteLayout.LayoutBounds="0,0.5,400,300" AbsoluteLayout.LayoutFlags="PositionProportional"
+               />
+
+
+    </AbsoluteLayout>
+</ContentPage>
